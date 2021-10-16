@@ -1,2 +1,5 @@
 # Repositorio de dependencias de Node
 node_modules
+
+# Arhivo con variables de entorno
+.env
