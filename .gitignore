@@ -3,3 +3,6 @@ node_modules
 
 # Arhivo con variables de entorno
 .env
+
+# Scripts BD
+modems.sql
