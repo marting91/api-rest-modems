@@ -1,6 +1,7 @@
 const { config } = require('../config/config');
 const querys = require('./querys');
 const mysql = require('mysql2/promise');
+const editJsonFile = require('edit-json-file');
 
 let connection;
 
@@ -24,6 +25,7 @@ async function findModems(vendor) {
     }
 }
 
+// Obtener todos los vendedores
 async function getVendors() {
     try {
         const [vendors] = await connection.execute("SELECT distinct(`vsi_vendor`) FROM `docsis_update` WHERE `vsi_vendor` <> '';");
@@ -33,4 +35,12 @@ async function getVendors() {
     }
 }
 
-module.exports = { connectDB, findModems, getVendors };
+async function addModem(modem) {
+    // Abro el archivo JSON y agrego el modelo solicitado
+    let file = editJsonFile(`${__dirname}/models.json`);
+    file.append('models', modem);
+    file.save();
+    return file.get();
+}
+
+module.exports = { connectDB, findModems, getVendors, addModem };

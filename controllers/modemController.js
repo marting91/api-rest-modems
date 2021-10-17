@@ -1,4 +1,4 @@
-const { findModems, getVendors } = require('../db/db');
+const { findModems, getVendors, addModem } = require('../db/db');
 const { models: modelsJSON } = require('../db/models.json');
 
 exports.matchModels = async (req, res) => {
@@ -19,4 +19,10 @@ exports.matchModels = async (req, res) => {
 exports.getFabricantes = async (req, res) => {
     const vendors = await getVendors();
     res.json(vendors)
+}
+
+exports.addModel = async (req, res) => {
+    console.log(req.body);
+    const result = await addModem(req.body);
+    res.json(result);
 }
