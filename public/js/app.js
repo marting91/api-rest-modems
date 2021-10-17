@@ -26,7 +26,10 @@ async function addModel(e) {
                 title: 'Modelo agregado correctamente',
                 showConfirmButton: false,
                 timer: 1500
-            });
+            }).then(() => {
+                const event = new Event('change');
+                vendorSelect.dispatchEvent(event);
+            })
         } else {
             Swal.fire({
                 icon: 'error',
@@ -38,12 +41,14 @@ async function addModel(e) {
 }
 
 async function getModems(e) {
+    console.log(e);
     tableBody.innerHTML = '';
     const vendorSelected = e.target.value;
     const modems = await callApi('GET', `/fabricantes/${vendorSelected}/modems`);
 
     if (!modems.msg) {
         for (const modem of modems) {
+            console.log(modem);
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td data-modem="macaddr">${modem.modem_macaddr}</td>
