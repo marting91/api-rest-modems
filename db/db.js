@@ -13,26 +13,17 @@ async function connectDB() {
     for (let query of querys.inserts) {
         await connection.query(query);
     }
-    console.log('BD Conectada');
 }
 
 async function findModems(vendor) {
-    try {
-        const [rows] = await connection.execute('SELECT `modem_macaddr`, `ipaddr`, `vsi_model`, `vsi_vendor`, `vsi_swver` FROM `docsis_update` WHERE `vsi_vendor` LIKE ?', [vendor]);
-        return rows;
-    } catch (error) {
-        console.log(error);
-    }
+    const [rows] = await connection.execute('SELECT `modem_macaddr`, `ipaddr`, `vsi_model`, `vsi_vendor`, `vsi_swver` FROM `docsis_update` WHERE `vsi_vendor` LIKE ?', [vendor]);
+    return rows;
 }
 
 // Obtener todos los vendedores
 async function getVendors() {
-    try {
-        const [vendors] = await connection.execute("SELECT distinct(`vsi_vendor`) FROM `docsis_update` WHERE `vsi_vendor` <> '';");
-        return vendors;
-    } catch (error) {
-        console.log(error);
-    }
+    const [vendors] = await connection.execute("SELECT distinct(`vsi_vendor`) FROM `docsis_update` WHERE `vsi_vendor` <> '';");
+    return vendors;
 }
 
 async function addModem(modem) {
