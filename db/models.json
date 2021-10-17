@@ -75,6 +75,11 @@
       "vendor": "Arris",
       "name": "DG1660A_v9",
       "soft": "v1"
+    },
+    {
+      "vendor": "Netwave",
+      "name": "MNG2300",
+      "soft": "2.93.1021"
     }
   ]
 }
