@@ -36,15 +36,12 @@ async function getVendors() {
 }
 
 async function addModem(modem) {
-    try {
-        // Abro el archivo JSON y agrego el modelo solicitado
-        let file = editJsonFile(`${__dirname}/models.json`);
-        file.append('models', modem);
-        file.save();
-        return file.get();
-    } catch (error) {
-        console.log(error);
-    }
+
+    // Abro el archivo JSON y agrego el modelo solicitado
+    let file = editJsonFile(`${__dirname}/models.json`);
+    file.append('models', modem);
+    file.save();
+    return file.get();
 
 }
 

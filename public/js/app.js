@@ -17,10 +17,17 @@ async function addModel(e) {
             name: row.querySelector('td[data-modem="vsi_model"]').textContent,
             soft: row.querySelector('td[data-modem="vsi_swver"]').textContent
         }
-        console.log(model);
-        console.log(row);
         const result = await callApi('POST', `/fabricantes/${vendorSelect.value}/modems`, { 'Content-Type': 'application/json' }, JSON.stringify(model));
-        console.log(result);
+
+        if (!result.msg) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Modelo agregado correctamente',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
     };
 }
 
