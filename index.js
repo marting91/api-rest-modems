@@ -2,9 +2,8 @@ const express = require('express');
 const router = require('./routes');
 const db = require('./db/db');
 const app = express();
-const modelsJSON = require('./models.json');
 
-app.use(router);
+app.use('/api/v1', router);
 
 (async () => {
     try {
