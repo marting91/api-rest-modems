@@ -1,7 +1,7 @@
 # Repositorio de dependencias de Node
 node_modules
 
-# Arhivo con variables de entorno
+# Arhivo con variables de entorno 
 .env
 
 # Scripts BD
