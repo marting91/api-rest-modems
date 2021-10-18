@@ -23,4 +23,4 @@ Para que funcione correctamente la aplicación, modificar los valores de configu
 
 La creación de las tablas así como su llenado es automática, pero debe disponerse de un servidor MySQL corriendo y una base de datos creada, la cual debe incluirse en el archivo `.env`
 
-Una vez ejecutado el script `run.sh` la aplicación será visible en la url `127.0.0.1:4000` (a menos que se especifique otro puerto en el archivo `.env`).
+Una vez ejecutado el script `npm start` la aplicación será visible en la url `127.0.0.1:4000` (a menos que se especifique otro puerto en el archivo `.env`).
